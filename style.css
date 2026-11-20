@@ -4,6 +4,14 @@ body {
     min-height: 100vh;
     color: white;
 }
+@font-face {
+  font-family: "MaPolice";
+  src: url("police/FairfaxBold.ttf") format("truetype");
+}
+
+h1, h2, p {
+  font-family: "MaPolice", sans-serif;
+}
 .video-fond {
     position: fixed;
     top: 0;
