@@ -25,7 +25,7 @@ body {
 
 
 .carre, .rectangle {
-    background-color: rgb(20, 43, 74);
+    background-color: hwb(214 8% 71%);
     border: 2px solid white;
     border-radius: 20px;
     padding: 20px;
@@ -85,13 +85,36 @@ a {
     background-color: rgb(100, 100, 100);
 }
 
+
 @media (max-width: 650px) {
+
     .grille {
         grid-template-columns: 1fr;
+        gap: 15px;
+        margin: 20px auto;
+        padding: 0 15px;
     }
 
     .carre {
-        min-height: 240px;
+        width: 100%;
         height: auto;
+        min-height: 200px;
+    }
+
+    .rectangle {
+        min-height: 0;
+    }
+
+    h1, h2 {
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    .carre .photo {
+        width: 100px;
     }
 }
