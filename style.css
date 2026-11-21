@@ -1,9 +1,18 @@
 /* 1. Réglages généraux de toute la page */
 
-body { /* body représente toute la page web */
+html { /* règle la page HTML entière, du bord gauche au bord droit */
+    width: 100%; /* utilise toute la largeur disponible */
+    min-height: 100%; /* permet à la page de grandir avec son contenu */
+}
+
+body { /* body contient tout ce qui est visible sur la page */
     margin: 0; /* enlève l’espace que le navigateur met autour de la page */
-    min-height: 100vh; /* donne à la page au moins la hauteur de l’écran */
+    width: 100%; /* évite de laisser une marge sur les côtés */
+    min-height: 100vh; /* solution de secours pour les navigateurs anciens */
+    min-height: 100dvh; /* donne au moins la hauteur réellement visible sur le téléphone */
     color: white; /* met le texte en blanc par défaut */
+    overflow-x: hidden; /* empêche la page de créer un défilement horizontal */
+    isolation: isolate; /* garde la vidéo derrière le contenu, tout en la laissant visible */
 }
 
 
@@ -31,12 +40,14 @@ h2 { /* sélectionne aussi les titres h2 */
 
 .video-fond { /* vise l'élément HTML qui porte le nom video-fond */
     position: fixed; /* garde la vidéo fixée à l'écran quand on fait défiler la page */
-    top: 0; /* colle le haut de la vidéo en haut de l'écran */
-    left: 0; /* colle le côté gauche de la vidéo au côté gauche de l'écran */
-    width: 100%; /* donne à la vidéo toute la largeur de l'écran */
-    height: 100%; /* donne à la vidéo toute la hauteur de l'écran */
-    object-fit: cover; /* agrandit ou recadre la vidéo pour remplir l'écran */
+    inset: 0; /* colle ses quatre bords aux quatre bords de l'écran */
+    display: block; /* enlève l'espace que le navigateur peut ajouter sous une vidéo */
+    width: 100%; /* occupe toute la largeur disponible */
+    height: 100%; /* occupe toute la hauteur disponible */
+    object-fit: cover; /* remplit l'écran sans étirer la vidéo ; les bords peuvent être recadrés */
+    object-position: center; /* garde le centre de la vidéo visible pendant le recadrage */
     z-index: -1; /* place la vidéo derrière les autres éléments */
+    pointer-events: none; /* laisse les appuis sur les cartes et les liens fonctionner */
 }
 
 
@@ -150,6 +161,12 @@ a { /* vise tous les liens du site */
 /* 11. Changements pour les écrans de téléphone */
 
 @media (max-width: 650px) { /* applique les règles suivantes si l'écran fait 650 pixels de large ou moins */
+
+    .video-fond { /* force la vidéo à suivre la taille visible de l'écran du téléphone */
+        width: 100vw; /* prend toute la largeur de l'écran, même si le contenu a des marges */
+        height: 100vh; /* solution de secours pour les navigateurs qui ne connaissent pas 100dvh */
+        height: 100dvh; /* prend toute la hauteur visible du téléphone, même quand la barre Safari bouge */
+    }
 
     .grille { /* adapte la grille principale au téléphone */
         grid-template-columns: 1fr; /* remplace les deux colonnes par une seule */

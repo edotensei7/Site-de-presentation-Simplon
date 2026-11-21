@@ -33,13 +33,14 @@
 <!-- Début du contenu visible de la page -->
 <body>
 
-    <!-- Vidéo d'arrière-plan -->
-    <!-- class="video-fond" permet au CSS de retrouver et de placer cette vidéo -->
+    <!-- Vidéo décorative placée en arrière-plan par le CSS -->
+    <!-- class="video-fond" permet au CSS de l'étendre sur l'écran du téléphone -->
     <!-- autoplay lance la vidéo automatiquement -->
     <!-- muted coupe le son -->
     <!-- loop recommence la vidéo à la fin -->
-    <!-- playsinline permet de la lire dans la page sur téléphone -->
-    <video class="video-fond" autoplay muted loop playsinline>
+    <!-- playsinline permet de la lire dans la page, sans l'ouvrir en plein écran -->
+    <!-- aria-hidden="true" indique aux lecteurs d'écran que cette vidéo est seulement décorative -->
+    <video class="video-fond" autoplay muted loop playsinline aria-hidden="true">
 
         <!-- Indique le fichier vidéo à lire et son format -->
         <source src="image/retrovideo2.mp4" type="video/mp4">
