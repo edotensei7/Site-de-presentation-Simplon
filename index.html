@@ -1,242 +1,672 @@
-<!-- Indique au navigateur que ce fichier utilise HTML moderne -->
+<!--
+    <!DOCTYPE html> est une déclaration obligatoire placée au début du fichier.
+
+    Elle indique au navigateur que le document utilise HTML5, c’est-à-dire
+    la version moderne du langage HTML.
+
+    Ce n’est pas une balise HTML : elle ne possède donc pas de balise fermante.
+-->
 <!DOCTYPE html>
 
-<!-- Début de la page HTML ; lang="fr" indique que le contenu est en français -->
+
+<!--
+    <html> est la balise racine du document.
+
+    Toutes les autres balises de la page doivent être placées entre
+    <html> et </html>.
+
+    L’attribut lang="fr" indique que la langue principale du contenu est
+    le français. Cette information est notamment utilisée par :
+
+    - les lecteurs d’écran ;
+    - les moteurs de recherche ;
+    - les correcteurs orthographiques ;
+    - les outils automatiques de traduction.
+-->
 <html lang="fr">
 
-<!-- Le head contient des informations sur la page, invisibles dans son contenu -->
+
+<!--
+    <head> ouvre l’en-tête technique du document.
+
+    Cette partie contient des informations destinées au navigateur et aux
+    moteurs de recherche. Son contenu n’est normalement pas affiché dans
+    la partie visible de la page.
+
+    Il ne faut pas confondre <head> avec un en-tête visible de type <header>.
+-->
 <head>
 
-    <!-- Permet d'afficher correctement les accents et les caractères français -->
+
+    <!--
+        <meta> ajoute une information technique au document.
+
+        L’attribut charset définit l’encodage des caractères.
+
+        La valeur UTF-8 permet notamment d’afficher correctement :
+
+        - les lettres accentuées ;
+        - les apostrophes ;
+        - les caractères spéciaux ;
+        - la majorité des systèmes d’écriture.
+
+        <meta> est une balise dite « vide » : elle ne contient aucun élément
+        et n’a donc pas besoin d’une balise fermante </meta>.
+    -->
     <meta charset="UTF-8">
 
-    <!-- Définit la petite icône affichée dans l'onglet du navigateur -->
-    <!-- href indique le chemin vers le fichier image de l'icône -->
+
+    <!--
+        <link> crée une relation entre le document HTML et une ressource externe.
+
+        Ici, cette balise charge l’icône affichée dans l’onglet du navigateur.
+
+        rel="icon" indique que la ressource est une icône de site.
+
+        type="image/png" précise que le fichier utilisé est une image PNG.
+
+        href="image/logo.png" indique le chemin du fichier :
+        le navigateur cherche logo.png dans le dossier image.
+
+        <link> est également une balise vide et ne possède pas de balise fermante.
+    -->
     <link rel="icon" type="image/png" href="image/logo.png">
 
-    <!-- Aide le navigateur à adapter la page à la largeur d'un téléphone -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Relie ce fichier HTML au fichier CSS qui règle l'apparence du site -->
-    <!-- rel="stylesheet" précise que style.css est une feuille de style -->
-    <!-- href="style.css" indique le nom et l'emplacement du fichier CSS -->
-    <!-- Le fichier style.css doit se trouver à côté de index.html -->
+    <!--
+        Cette balise <meta> configure la zone d’affichage de la page,
+        également appelée viewport.
+
+        name="viewport" indique que les réglages concernent la zone visible
+        dans le navigateur.
+
+        content contient plusieurs réglages séparés par des virgules :
+
+        width=device-width demande d’utiliser la largeur réelle de l’appareil.
+
+        initial-scale=1 applique un niveau de zoom initial normal.
+
+        viewport-fit=cover autorise la page à utiliser toute la surface
+        disponible sur certains téléphones, y compris autour des encoches
+        et des zones arrondies de l’écran.
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+
+    <!--
+        Cette deuxième balise <link> relie le HTML à sa feuille de style CSS.
+
+        rel="stylesheet" indique que la ressource chargée est une feuille
+        de style.
+
+        href="style.css" indique que le fichier style.css est placé dans
+        le même dossier que index.html.
+
+        Le fichier CSS utilise notamment les classes définies dans le HTML :
+
+        - .video-fond ;
+        - .grille ;
+        - .carre ;
+        - .rectangle ;
+        - .ligne-projets ;
+        - .photo ;
+        - .jardinlysphoto ;
+        - .lien-jardinlys.
+    -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- Définit le titre affiché dans l'onglet du navigateur -->
+
+    <!--
+        <title> définit le titre du document.
+
+        Ce texte apparaît principalement :
+
+        - dans l’onglet du navigateur ;
+        - dans les favoris ;
+        - dans certains résultats de moteurs de recherche ;
+        - dans l’historique du navigateur.
+
+        Cette balise ne crée pas un titre visible dans la page.
+        Les titres visibles sont créés avec <h1> ou <h2>.
+    -->
     <title>Présentation de mon parcours</title>
 
-<!-- Fin de la partie des informations invisibles -->
+
+<!--
+    </head> ferme l’en-tête technique du document.
+
+    Tout le contenu visible doit être placé après cette fermeture,
+    dans la balise <body>.
+-->
 </head>
 
 
-<!-- Début du contenu visible de la page -->
+<!--
+    <body> ouvre le corps du document.
+
+    Cette balise contient tout ce qui est visible ou utilisé dans la page :
+
+    - la vidéo d’arrière-plan ;
+    - les titres ;
+    - les paragraphes ;
+    - les images ;
+    - les liens ;
+    - les différents blocs de présentation.
+
+    Les règles du sélecteur body dans style.css s’appliquent à cette balise.
+-->
 <body>
 
-    <!-- Vidéo décorative placée en arrière-plan par le CSS -->
-    <!-- class="video-fond" permet au CSS de l'étendre sur l'écran du téléphone -->
-    <!-- autoplay lance la vidéo automatiquement -->
-    <!-- muted coupe le son -->
-    <!-- loop recommence la vidéo à la fin -->
-    <!-- playsinline permet de la lire dans la page, sans l'ouvrir en plein écran -->
-    <!-- aria-hidden="true" indique aux lecteurs d'écran que cette vidéo est seulement décorative -->
+
+    <!--
+        <video> permet d’intégrer une vidéo dans une page HTML.
+
+        class="video-fond" attribue à la vidéo la classe video-fond.
+        Le sélecteur .video-fond du CSS utilise cette classe pour placer
+        la vidéo en position fixe derrière tout le contenu.
+
+        autoplay demande au navigateur de démarrer automatiquement la vidéo.
+
+        muted désactive le son. Cet attribut est généralement nécessaire
+        pour que les navigateurs acceptent le démarrage automatique.
+
+        loop relance automatiquement la vidéo lorsqu’elle arrive à la fin.
+
+        playsinline demande aux téléphones de lire la vidéo directement
+        dans la page au lieu de l’ouvrir automatiquement en plein écran.
+
+        aria-hidden="true" masque cet élément aux technologies d’assistance.
+        Cette vidéo étant seulement décorative, un lecteur d’écran n’a pas
+        besoin de l’annoncer.
+    -->
     <video class="video-fond" autoplay muted loop playsinline aria-hidden="true">
 
-        <!-- Indique le fichier vidéo à lire et son format -->
+
+        <!--
+            <source> définit le fichier que l’élément <video> doit lire.
+
+            src="image/retrovideo2.mp4" indique que le fichier retrovideo2.mp4
+            se trouve dans le dossier image.
+
+            type="video/mp4" précise au navigateur que le fichier utilise
+            le format vidéo MP4.
+
+            Le navigateur utilise cette information pour vérifier s’il peut
+            lire le fichier avant de le télécharger.
+
+            <source> est une balise vide et n’a pas de balise fermante.
+        -->
         <source src="image/retrovideo2.mp4" type="video/mp4">
 
-    <!-- Fin de la vidéo -->
+
+    <!--
+        </video> ferme l’élément vidéo.
+
+        Tout ce qui se trouve entre <video> et </video> appartient
+        à cet élément.
+    -->
     </video>
 
 
-    <!-- Zone principale qui contient toutes les sections du portfolio -->
-    <!-- class="grille" permet au CSS d'organiser ses éléments en colonnes -->
+    <!--
+        <main> représente le contenu principal de la page.
+
+        Il est recommandé de n’utiliser qu’un seul élément <main> par page.
+
+        Cette balise apporte une information sémantique : elle indique aux
+        navigateurs et aux lecteurs d’écran où commence le contenu principal.
+
+        class="grille" relie cet élément au sélecteur .grille du CSS.
+
+        Le CSS transforme ce contenu principal en grille :
+
+        - une première colonne de 240 pixels ;
+        - une seconde colonne utilisant l’espace restant ;
+        - un espace entre les différents blocs.
+    -->
     <main class="grille">
 
 
-        <!-- Premier petit bloc : titre de présentation et photo -->
-        <!-- class="carre" permet au CSS de donner à ce bloc l'apparence d'un carré -->
+        <!--
+            <div> est un conteneur générique utilisé pour regrouper du contenu.
+
+            Une balise <div> n’ajoute pas de signification particulière.
+            Son rôle principal est de créer un groupe qui peut être organisé
+            et mis en forme avec le CSS.
+
+            class="carre" applique la classe carre à ce premier bloc.
+
+            Dans style.css, .carre définit notamment :
+
+            - une hauteur de 240 pixels ;
+            - une organisation verticale avec Flexbox ;
+            - un centrage horizontal et vertical ;
+            - un espace entre l’image et le titre.
+
+            La classe .carre partage également certaines règles visuelles
+            avec la classe .rectangle : fond, bordure, coins arrondis et padding.
+        -->
         <div class="carre">
 
-            <!-- Affiche ma photo -->
-            <!-- class="photo" permet au CSS de régler cette photo séparément -->
-            <!-- src indique l'adresse de l'image -->
-            <!-- alt décrit l'image si elle ne peut pas s'afficher -->
+
+            <!--
+                <img> insère une image dans la page.
+
+                class="photo" permet au CSS d’identifier précisément cette image.
+
+                Le sélecteur .carre .photo signifie :
+                « sélectionner un élément class="photo" placé à l’intérieur
+                d’un élément class="carre" ».
+
+                src contient l’adresse de l’image à afficher.
+                Ici, l’image est chargée depuis une adresse Internet.
+
+                alt contient le texte alternatif de l’image.
+                Ce texte est utilisé si l’image ne peut pas être chargée
+                et peut être lu par les lecteurs d’écran.
+
+                <img> est une balise vide : elle ne possède pas de </img>.
+            -->
             <img class="photo" src="https://i.postimg.cc/x861P24L/Capture-d-e-cran-2026-09-27-a-12-07-32.png" alt="Ma photo">
 
-            <!-- Titre principal de cette section -->
+
+            <!--
+                <h1> représente le titre principal de la page.
+
+                La lettre h signifie heading, c’est-à-dire « titre ».
+                Le chiffre 1 indique le niveau le plus important.
+
+                Un h1 ne sert pas uniquement à agrandir le texte :
+                il décrit la structure et le sujet principal du document.
+
+                Les règles h1 du CSS définissent sa police, sa marge
+                et sa taille.
+            -->
             <h1>Présentation professionnel</h1>
 
-        <!-- Fin du petit bloc de présentation -->
+
+        <!--
+            </div> ferme le premier bloc class="carre".
+
+            Cette fermeture permet de savoir que la photo et le h1
+            appartiennent au même bloc.
+        -->
         </div>
 
 
-        <!-- Grand bloc à côté de la présentation -->
-        <!-- class="rectangle" permet au CSS de lui donner l'apparence d'un rectangle -->
+        <!--
+            Ouvre un nouveau conteneur générique.
+
+            class="rectangle" relie ce bloc au sélecteur .rectangle du CSS.
+
+            Contrairement aux blocs class="carre", les blocs .rectangle :
+
+            - possèdent une hauteur minimale plutôt qu’une hauteur fixe ;
+            - peuvent grandir selon leur contenu ;
+            - organisent leurs éléments verticalement avec Flexbox.
+        -->
         <div class="rectangle">
 
-            <!-- Le paragraphe contient le texte de présentation -->
+
+            <!--
+                <p> représente un paragraphe de texte.
+
+                Le navigateur comprend que le contenu placé entre <p> et </p>
+                forme une unité de texte.
+
+                Les règles du sélecteur p dans le CSS appliquent la police
+                personnalisée et suppriment la marge automatique.
+            -->
             <p>
                 Bonjour je m'appelle Ayoub j'ai 26 ans après avoir eu une longue experience dans la grande distribution
-                j'ai décidé de me réorienter dans un domaine dans lequel je veut m'épanouir.<br>
+                j'ai décidé de me réorienter dans un domaine dans lequel je veut m'épanouir.
+
+
+                <!--
+                    <br> crée un retour à la ligne à l’intérieur du paragraphe.
+
+                    Cette balise ne crée pas un nouveau paragraphe : elle fait
+                    seulement continuer le texte sur la ligne suivante.
+
+                    <br> est une balise vide et ne possède pas de balise fermante.
+                -->
+                <br>
+
+
+            <!-- Ferme le premier paragraphe du bloc de présentation. -->
             </p>
+
+
+            <!-- Ouvre un deuxième paragraphe indépendant du premier. -->
             <p>
                 Mes métiers de rêves serait dans l'idéal développeur d'application ou
                 développeur web pour me permettre d'enrichir ma créativité
-            
+
+
+            <!-- Ferme le deuxième paragraphe de présentation. -->
             </p>
 
-            <!-- h2 est un titre de niveau inférieur au titre principal h1 -->
+
+            <!--
+                <h2> représente un titre de deuxième niveau.
+
+                Un h2 sert normalement à identifier une partie dépendant du h1.
+                Ici, il contient le lien vers le profil LinkedIn.
+
+                Le CSS applique aux h2 la même police et la même taille
+                qu’aux h1.
+            -->
             <h2>
-                <!-- a crée un lien cliquable -->
-                <!-- href contient l'adresse de destination du lien -->
+
+
+                <!--
+                    <a> crée un lien hypertexte cliquable.
+
+                    La lettre a signifie anchor, c’est-à-dire « ancre ».
+
+                    href définit la destination du lien.
+                    Lorsque l’utilisateur clique sur le texte, le navigateur
+                    ouvre l’adresse indiquée dans href.
+
+                    Le sélecteur a du CSS affiche le texte du lien en blanc.
+                -->
                 <a href="https://www.linkedin.com/in/ayoub-benhouy-23a6531b1/">
                     Lien vers mon Linkedin
+
+
+                <!-- Ferme le lien : seul le texte placé à l’intérieur est cliquable. -->
                 </a>
+
+
+            <!-- Ferme le titre de niveau 2 contenant le lien LinkedIn. -->
             </h2>
 
-        <!-- Fin du grand bloc de présentation -->
+
+        <!-- Ferme le grand bloc de présentation class="rectangle". -->
         </div>
 
 
-        <!-- Petit bloc sur les notions apprises -->
+        <!-- Ouvre un nouveau petit bloc utilisant la classe carre. -->
         <div class="carre">
 
-            <!-- Titre du bloc -->
+
+            <!--
+                Affiche un titre de deuxième niveau.
+                Ce titre indique le sujet du bloc qui suit.
+            -->
             <h2>Mes notions</h2>
 
-            <!-- Image de l'ampoule -->
-            <!-- class="ampoule" permet au CSS de retrouver cette image si besoin -->
+
+            <!--
+                Affiche le fichier ampoule.png situé dans le dossier image.
+
+                class="ampoule" donne un nom spécifique à cette image.
+
+                Même si aucune règle .ampoule n’existe actuellement dans le CSS,
+                l’image est mise en forme par .carre img, car elle se trouve
+                dans un élément class="carre".
+
+                alt décrit l’image si elle ne peut pas être affichée.
+            -->
             <img class="ampoule" src="image/ampoule.png" alt="Ampoule pixel art">
 
-        <!-- Fin du petit bloc -->
+
+        <!-- Ferme le petit bloc consacré aux notions. -->
         </div>
 
 
-        <!-- Grand bloc qui accompagne "Mes notions" -->
+        <!-- Ouvre le grand bloc associé à la partie « Mes notions ». -->
         <div class="rectangle">
 
-            <!-- Texte sur les notions apprises et la recherche d'alternance -->
+
+            <!-- Ouvre le paragraphe qui présente les connaissances actuelles. -->
             <p>
                 J'ai quelques notions en HTML et CSS et j'aimerais trouver
                 une entreprise qui pourrait m'embaucher en alternance pour pouvoir
                 progresser dans ces langages et en apprendre d'autre en amont comme
                 notament le javascript et python.
+
+
+            <!-- Ferme le paragraphe consacré aux notions. -->
             </p>
 
-        <!-- Fin du grand bloc -->
+
+        <!-- Ferme le grand bloc associé aux notions. -->
         </div>
 
 
-        <!-- Petit bloc sur les raisons de mon intérêt pour l'informatique -->
+        <!-- Ouvre un nouveau petit bloc de la colonne de gauche. -->
         <div class="carre">
 
-            <!-- Titre de la section -->
+
+            <!-- Affiche le titre de deuxième niveau de cette partie. -->
             <h2>Pourquoi le domaine de l'informatique ?</h2>
 
-            <!-- Image de l'ordinateur -->
-            <!-- alt donne ici une description de l'image -->
+
+            <!--
+                Affiche le fichier ordi.png situé dans le dossier image.
+
+                class="ordi" permet d’identifier cette image séparément.
+
+                L’image reçoit actuellement les règles générales de .carre img,
+                qui lui donnent une largeur de 60 pixels et une hauteur automatique.
+
+                alt fournit un texte alternatif.
+            -->
             <img class="ordi" src="image/ordi.png" alt="Ampoule">
 
-        <!-- Fin du petit bloc -->
+
+        <!-- Ferme le petit bloc sur le domaine informatique. -->
         </div>
 
 
-        <!-- Grand bloc qui accompagne "Pourquoi le domaine de l'informatique ?" -->
+        <!-- Ouvre le grand bloc contenant l’explication du parcours informatique. -->
         <div class="rectangle">
 
-            <!-- Paragraphe qui raconte mon parcours avec l'informatique -->
+
+            <!-- Ouvre le premier paragraphe de cette partie. -->
             <p>
                 J'ai eu mon première ordinateur jeune, je jouais a plusieurs
                 jeu notamment un jeu qui avait du succès en France qui s'appelait Habbo,
                 après de longue heures de jeu j'ai eu l'envie de crée mon propre rétro serveur
-                que j'ai coder avec mes amis.</p>
+                que j'ai coder avec mes amis.
+
+
+            <!-- Ferme le premier paragraphe du parcours informatique. -->
+            </p>
+
+
+            <!--
+                Ouvre un nouveau paragraphe.
+
+                Utiliser plusieurs balises <p> permet de séparer logiquement
+                les différentes idées du texte.
+            -->
             <p>
                 J'ai donc toucher aux HTML, CSS, MySQL, FileZila, Photoshop.
                 J'ai eu donc eu l'envie de retrouver cette nostalgie de coder,
                 faire du design et être fier de réaliser des projets
                 J'ai donc récemment fait la piscine de l'école 42
                 qui était une expérience enrichisante.
+
+
+            <!-- Ferme le deuxième paragraphe du parcours informatique. -->
             </p>
+
+
+            <!-- Ouvre le troisième paragraphe de cette partie. -->
             <p>
                 Malheursement les projets que j'ai exporter sur Github
                 ne peuvent pas être public par soucis de confidentialité.
                 Et aujourd'hui je souhaite trouver une entreprise
                 pour me prendre en alternance en tant que développeur.
+
+
+            <!-- Ferme le troisième paragraphe du parcours informatique. -->
             </p>
 
-        <!-- Fin du grand bloc -->
+
+        <!-- Ferme le grand bloc consacré au parcours informatique. -->
         </div>
 
 
-        <!-- Groupe spécial pour la section "Mes derniers projets" -->
-        <!-- Cette classe permet au CSS de régler cette rangée séparément -->
+        <!--
+            Ouvre un conteneur spécial pour la partie consacrée aux projets.
+
+            class="ligne-projets" correspond au sélecteur .ligne-projets du CSS.
+
+            Ce conteneur est placé dans la grille principale, mais il crée
+            également sa propre grille interne.
+
+            grid-column: 1 / -1 lui permet d’occuper toute la largeur
+            de la grille principale.
+        -->
         <div class="ligne-projets">
 
 
-            <!-- Petit bloc avec le titre et l'icône du dossier -->
+            <!--
+                Ouvre le petit bloc qui contient le titre et l’image du dossier.
+
+                Comme ce bloc est un enfant direct de .ligne-projets,
+                il est aussi ciblé par le sélecteur :
+
+                .ligne-projets > .carre
+            -->
             <div class="carre">
 
-                <!-- Titre de la section des projets -->
+
+                <!-- Affiche le titre de deuxième niveau de la partie projets. -->
                 <h2>Mes derniers projets</h2>
 
-                <!-- Image du dossier -->
+
+                <!--
+                    Affiche le fichier dossier.png situé dans le dossier image.
+
+                    class="dossier" identifie cette image.
+
+                    Elle reçoit les dimensions définies par .carre img,
+                    car elle se trouve dans un bloc class="carre".
+                -->
                 <img class="dossier" src="image/dossier.png" alt="Dossier">
 
-            <!-- Fin du petit bloc "Mes derniers projets" -->
+
+            <!-- Ferme le petit bloc consacré aux derniers projets. -->
             </div>
 
 
-            <!-- Lien qui englobe tout le bloc Jardin Lys -->
-            <!-- class contient deux noms : rectangle et lien-jardinlys -->
-            <!-- Ces noms permettent au CSS de retrouver et de styliser ce bloc -->
-            <!-- href indique le site qui s'ouvre quand on clique sur le bloc -->
+            <!--
+                Cette balise <a> possède deux classes séparées par un espace.
+
+                La classe rectangle lui donne l’apparence d’un grand bloc :
+                fond, bordure, coins arrondis, padding et organisation verticale.
+
+                La classe lien-jardinlys applique les règles propres au lien :
+                suppression du soulignement et changement de couleur au survol.
+
+                Comme la balise <a> englobe tout le contenu du projet,
+                l’intégralité du bloc est cliquable.
+
+                href="https://jardinlys.com" définit la destination du lien.
+            -->
             <a class="rectangle lien-jardinlys" href="https://jardinlys.com">
 
-                <!-- Image de la boutique Jardin Lys -->
+
+                <!--
+                    Cette balise <img> est écrite sur plusieurs lignes,
+                    mais son fonctionnement reste identique.
+
+                    class="jardinlysphoto" correspond au sélecteur
+                    .jardinlysphoto du CSS.
+
+                    src indique le chemin de l’image.
+
+                    alt décrit le contenu de l’image si elle n’est pas visible.
+                -->
                 <img
                     class="jardinlysphoto" src="image/jardinlys.png" alt="Photo du site web">
 
-                <!-- Texte qui présente le projet Jardin Lys -->
+
+                <!-- Ouvre le premier paragraphe de présentation du projet. -->
                 <p>
-                    Le dernier projet dans lequel je me suis appliqué est une boutique en ligne que j’ai créée avec Shopify. 
-                </p>
-                <p>
-                        Je me suis inspiré de grandes maisons de luxe, avec un thème plutôt discret et sombre et une police de texte qui donne un effet élégant. Je me suis servi de Canva et Photoshop pour faire le logo. 
-                </p>
-                <p>    
-                Je pense retravailler le site pour faire un autre thème, plus fleuri et lumineux.
+                    Le dernier projet dans lequel je me suis appliqué est une boutique en ligne que j’ai créée avec Shopify.
+
+
+                <!-- Ferme le premier paragraphe du projet Jardin Lys. -->
                 </p>
 
-                <!-- Titre qui invite à découvrir la boutique -->
+
+                <!-- Ouvre le deuxième paragraphe consacré à l’identité visuelle. -->
+                <p>
+                        Je me suis inspiré de grandes maisons de luxe, avec un thème plutôt discret et sombre et une police de texte qui donne un effet élégant. Je me suis servi de Canva et Photoshop pour faire le logo.
+
+
+                <!-- Ferme le deuxième paragraphe du projet Jardin Lys. -->
+                </p>
+
+
+                <!-- Ouvre le troisième paragraphe consacré aux futures modifications. -->
+                <p>
+                Je pense retravailler le site pour faire un autre thème, plus fleuri et lumineux.
+
+
+                <!-- Ferme le troisième paragraphe du projet Jardin Lys. -->
+                </p>
+
+
+                <!--
+                    Ouvre un titre de premier niveau à l’intérieur du lien.
+
+                    Comme tout ce titre se trouve dans la balise <a>,
+                    il fait partie de la zone cliquable.
+                -->
                 <h1>
                     Découvrez Jardin Lys, ma boutique en ligne de vêtements en cliquant sur la section.
+
+
+                <!-- Ferme le titre du projet. -->
                 </h1>
 
-            <!-- Fin du lien cliquable Jardin Lys -->
+
+            <!--
+                Ferme la balise <a>.
+
+                Cette fermeture marque la fin de la zone cliquable
+                correspondant au projet Jardin Lys.
+            -->
             </a>
 
-        <!-- Fin du groupe spécial des projets -->
+
+        <!-- Ferme le groupe spécial class="ligne-projets". -->
         </div>
 
 
-        <!-- Petit bloc sur ce que je peux apporter -->
+        <!-- Ouvre le petit bloc « Pourquoi moi ? ». -->
         <div class="carre">
 
-            <!-- Titre de cette section -->
+
+            <!-- Affiche le titre de deuxième niveau de cette partie. -->
             <h2>Pourquoi moi ?</h2>
 
-            <!-- Image des étoiles -->
+
+            <!--
+                Affiche le fichier scinti.png situé dans le dossier image.
+
+                class="scinti" identifie l’image.
+
+                Elle reçoit les règles générales de .carre img.
+            -->
             <img class="scinti" src="image/scinti.png" alt="Ampoule">
 
-        <!-- Fin du petit bloc -->
+
+        <!-- Ferme le petit bloc « Pourquoi moi ? ». -->
         </div>
 
 
-        <!-- Grand bloc qui accompagne "Pourquoi moi ?" -->
+        <!-- Ouvre le grand bloc associé à la partie « Pourquoi moi ? ». -->
         <div class="rectangle">
 
-            <!-- Paragraphe qui décrit mes qualités -->
+
+            <!-- Ouvre le paragraphe présentant les qualités personnelles. -->
             <p>
                 Je suis le genre de personne qui s'impliquera au maximum
                 pour réaliser les projets qu'on me propose.
@@ -245,51 +675,105 @@
                 De nature social, à l'écoute et empathique
                 je pense pouvoir être un atout pour travailler
                 dans les meilleurs conditions.
+
+
+            <!-- Ferme le paragraphe consacré aux qualités. -->
             </p>
 
-        <!-- Fin du grand bloc -->
+
+        <!-- Ferme le grand bloc « Pourquoi moi ? ». -->
         </div>
 
 
-        <!-- Petit bloc "À propos de moi" -->
+        <!-- Ouvre le petit bloc « À propos de moi ». -->
         <div class="carre">
 
-            <!-- Titre de cette section -->
+
+            <!-- Affiche le titre de deuxième niveau de cette partie. -->
             <h2>A propos de moi</h2>
 
-        <!-- Fin du petit bloc -->
+
+        <!-- Ferme le petit bloc « À propos de moi ». -->
         </div>
 
 
-        <!-- Grand bloc qui contient les liens vers mon CV et mon GitHub -->
+        <!-- Ouvre le dernier grand bloc contenant les liens personnels. -->
         <div class="rectangle">
 
-            <!-- h2 affiche le lien comme un titre -->
+
+            <!--
+                Ouvre un titre de deuxième niveau.
+
+                Ce titre est utilisé comme conteneur pour le lien vers le CV.
+            -->
             <h2>
-                <!-- Lien vers mon CV ; href contient son adresse -->
+
+
+                <!--
+                    Crée un lien vers le CV hébergé sur Google Drive.
+
+                    href contient l’adresse exacte du document.
+
+                    Sans attribut target, le lien s’ouvre dans l’onglet actuel.
+                -->
                 <a href="https://drive.google.com/file/d/11HBgsIUgllYcIuTnZ_ilK8F7Q9P8Dahx/view?usp=sharing">
                     Lien vers mon CV
+
+
+                <!-- Ferme le lien vers le CV. -->
                 </a>
+
+
+            <!-- Ferme le titre contenant le lien vers le CV. -->
             </h2>
 
-            <!-- Deuxième titre contenant un lien -->
+
+            <!-- Ouvre un deuxième titre de niveau 2. -->
             <h2>
-                <!-- Lien vers mon compte GitHub -->
+
+
+                <!--
+                    Crée un lien vers le profil GitHub.
+
+                    href contient l’adresse de destination du lien.
+
+                    Le texte situé entre <a> et </a> constitue la partie
+                    visible et cliquable.
+                -->
                 <a href="https://github.com/edotensei7">
                     Lien vers mon Github
+
+
+                <!-- Ferme le lien vers GitHub. -->
                 </a>
+
+
+            <!-- Ferme le titre contenant le lien vers GitHub. -->
             </h2>
 
-        <!-- Fin du grand bloc des liens -->
+
+        <!-- Ferme le dernier grand bloc. -->
         </div>
 
 
-    <!-- Fin de la zone principale qui contient les blocs -->
+    <!--
+        </main> ferme la zone principale de la page.
+
+        Tous les blocs class="carre", class="rectangle" et le groupe
+        class="ligne-projets" se trouvent à l’intérieur de cette zone.
+    -->
     </main>
 
 
-<!-- Fin du contenu visible de la page -->
+<!--
+    </body> ferme le corps du document.
+
+    Aucun contenu visible ne doit normalement être placé après cette balise.
+-->
 </body>
 
-<!-- Fin du document HTML -->
+
+<!--
+    </html> ferme la balise racine et marque la fin complète du document HTML.
+-->
 </html>

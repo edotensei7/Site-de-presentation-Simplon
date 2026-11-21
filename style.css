@@ -1,211 +1,450 @@
-/* 1. Réglages généraux de toute la page */
+/* ==========================================================
+   1. RÉGLAGES GÉNÉRAUX DU DOCUMENT
+   Ces règles concernent les balises <html> et <body> de index.html.
+   ========================================================== */
 
-html { /* règle la page HTML entière, du bord gauche au bord droit */
-    width: 100%; /* utilise toute la largeur disponible */
-    min-height: 100%; /* permet à la page de grandir avec son contenu */
+/* Sélectionne la balise <html lang="fr">, racine du document HTML. */
+html {
+    /* Utilise toute la largeur disponible dans le navigateur. */
+    width: 100%;
+
+    /* Permet au document d’occuper au minimum toute la hauteur disponible. */
+    min-height: 100%;
 }
 
-body { /* body contient tout ce qui est visible sur la page */
-    margin: 0; /* enlève l’espace que le navigateur met autour de la page */
-    width: 100%; /* évite de laisser une marge sur les côtés */
-    min-height: 100vh; /* solution de secours pour les navigateurs anciens */
-    min-height: 100dvh; /* donne au moins la hauteur réellement visible sur le téléphone */
-    color: white; /* met le texte en blanc par défaut */
-    overflow-x: hidden; /* empêche la page de créer un défilement horizontal */
-    isolation: isolate; /* garde la vidéo derrière le contenu, tout en la laissant visible */
-}
+/* Sélectionne la balise <body>, qui contient tout le contenu visible. */
+body {
+    /* Supprime la marge ajoutée automatiquement par le navigateur. */
+    margin: 0;
 
+    /* Donne au body toute la largeur disponible. */
+    width: 100%;
 
-/* 2. Chargement de ta police personnalisée */
+    /* Définit une hauteur minimale égale à la hauteur classique de la fenêtre. */
+    min-height: 100vh;
 
-@font-face { /* indique au navigateur qu'une police personnelle est disponible */
-    font-family: "MaPolice"; /* donne le nom "MaPolice" à cette police */
-    src: url("police/FairfaxBold.ttf") format("truetype"); /* indique où se trouve le fichier de la police */
-}
+    /* Utilise la hauteur dynamique réellement visible sur les navigateurs récents. */
+    min-height: 100dvh;
 
-h1, /* sélectionne tous les titres h1 */
-h2, /* sélectionne tous les titres h2 */
-p { /* sélectionne tous les paragraphes */
-    font-family: "MaPolice", sans-serif; /* utilise MaPolice ; si elle ne marche pas, utilise une police sans petites décorations */
-    margin: 0; /* enlève les espaces automatiques autour des titres et paragraphes */
-}
-
-h1, /* sélectionne les titres h1 */
-h2 { /* sélectionne aussi les titres h2 */
-    font-size: 22px; /* règle leur taille de texte à 22 pixels */
+    /* Donne une couleur blanche au texte par défaut. */
+    color: white;
 }
 
 
-/* 3. Vidéo placée derrière le contenu */
+/* ==========================================================
+   2. CHARGEMENT DE LA POLICE PERSONNALISÉE
+   Cette police est ensuite utilisée par les balises h1, h2 et p.
+   ========================================================== */
 
-.video-fond { /* vise l'élément HTML qui porte le nom video-fond */
-    position: fixed; /* garde la vidéo fixée à l'écran quand on fait défiler la page */
-    inset: 0; /* colle ses quatre bords aux quatre bords de l'écran */
-    display: block; /* enlève l'espace que le navigateur peut ajouter sous une vidéo */
-    width: 100%; /* occupe toute la largeur disponible */
-    height: 100%; /* occupe toute la hauteur disponible */
-    object-fit: cover; /* remplit l'écran sans étirer la vidéo ; les bords peuvent être recadrés */
-    object-position: center; /* garde le centre de la vidéo visible pendant le recadrage */
-    z-index: -1; /* place la vidéo derrière les autres éléments */
-    pointer-events: none; /* laisse les appuis sur les cartes et les liens fonctionner */
+/* Déclare une police locale pouvant être utilisée dans la feuille de style. */
+@font-face {
+    /* Attribue le nom MaPolice à la police chargée. */
+    font-family: "MaPolice";
+
+    /* Indique le chemin du fichier et précise qu’il utilise le format TrueType. */
+    src: url("police/FairfaxBold.ttf") format("truetype");
+}
+
+/*
+    Sélectionne les balises <h1>, <h2> et <p> présentes dans index.html.
+    La virgule permet d’appliquer les mêmes règles aux trois types d’éléments.
+*/
+h1, h2, p {
+    /* Applique MaPolice ou une police sans empattement si son chargement échoue. */
+    font-family: "MaPolice", sans-serif;
+
+    /* Supprime les marges automatiques des titres et paragraphes. */
+    margin: 0;
+}
+
+/* Sélectionne ensemble tous les titres <h1> et <h2> de index.html. */
+h1,
+h2 {
+    /* Définit une taille de texte de 22 pixels pour les titres. */
+    font-size: 22px;
 }
 
 
-/* 4. Grille qui place les blocs du site */
+/* ==========================================================
+   3. VIDÉO D’ARRIÈRE-PLAN
+   Ces règles correspondent à <video class="video-fond">.
+   ========================================================== */
 
-.grille { /* vise le grand élément HTML qui contient les blocs */
-    display: grid; /* demande au navigateur de placer les blocs en grille */
-    grid-template-columns: 240px 1fr; /* crée deux colonnes : la première fait 240 pixels, la deuxième prend la place restante */
-    gap: 20px; /* laisse 20 pixels d'espace entre les blocs */
-    max-width: 1100px; /* limite la largeur maximale de toute la grille à 1100 pixels */
-    margin: 30px auto; /* laisse 30 pixels au-dessus et en dessous, et centre la grille à gauche et à droite */
-    padding: 0 20px; /* ajoute 20 pixels d'espace à l'intérieur, sur les côtés ; 0 signifie aucun espace en haut ni en bas */
+/* Sélectionne la vidéo possédant class="video-fond" dans index.html. */
+.video-fond {
+    /* Fixe la vidéo par rapport à la fenêtre pendant le défilement. */
+    position: fixed;
+
+    /* Place la vidéo contre les quatre bords de la fenêtre. */
+    inset: 0;
+
+    /* Donne à la vidéo toute la largeur de la fenêtre. */
+    width: 100vw;
+
+    /* Définit une hauteur de secours égale à celle de la fenêtre. */
+    height: 100vh;
+
+    /* Utilise toute la hauteur disponible, y compris sur mobile. */
+    height: 100lvh;
+
+    /* Agrandit et recadre la vidéo sans la déformer. */
+    object-fit: cover;
+
+    /* Centre le cadrage de la vidéo. */
+    object-position: center;
+
+    /* Place la vidéo derrière la grille, qui possède un z-index de 1. */
+    z-index: 0;
+
+    /* Empêche la vidéo d’intercepter les clics de l’utilisateur. */
+    pointer-events: none;
 }
 
 
-/* 5. Apparence partagée par les blocs carrés et rectangulaires */
+/* ==========================================================
+   4. GRILLE PRINCIPALE
+   Ces règles correspondent à <main class="grille">.
+   ========================================================== */
 
-.carre, /* sélectionne les blocs portant le nom carre */
-.rectangle { /* sélectionne aussi les blocs portant le nom rectangle */
-    background-color: hwb(214 8% 71%); /* donne aux blocs leur couleur bleu foncé */
-    border: 2px solid white; /* ajoute un contour blanc de 2 pixels */
-    border-radius: 20px; /* arrondit les coins des blocs de 20 pixels */
-    padding: 20px; /* laisse 20 pixels entre le bord du bloc et son contenu */
-    box-sizing: border-box; /* inclut le contour et l'espace intérieur dans la taille du bloc */
-    text-align: center; /* centre le texte à l'intérieur des blocs */
+/* Sélectionne l’élément principal portant class="grille" dans index.html. */
+.grille {
+    /* Active le système de mise en page CSS Grid. */
+    display: grid;
+
+    /* Crée une colonne de 240 px et une seconde utilisant l’espace restant. */
+    grid-template-columns: 240px 1fr;
+
+    /* Ajoute un espace de 20 px entre les blocs de la grille. */
+    gap: 20px;
+
+    /* Empêche la grille de dépasser une largeur de 1100 px. */
+    max-width: 1100px;
+
+    /* Ajoute 30 px verticalement et centre horizontalement la grille. */
+    margin: 30px auto;
+
+    /*
+        Ajoute un espace intérieur tenant compte des zones sécurisées mobiles.
+        Les côtés conservent un espacement de 15 px.
+    */
+    padding: env(safe-area-inset-top) 15px env(safe-area-inset-bottom);
+
+    /* Permet d’utiliser z-index sur la grille. */
+    position: relative;
+
+    /* Place la grille au-dessus de la vidéo ayant un z-index de 0. */
+    z-index: 1;
 }
 
 
-/* 6. Réglages des petits blocs carrés */
+/* ==========================================================
+   5. APPARENCE COMMUNE DES BLOCS
+   Ces règles concernent class="carre" et class="rectangle".
+   ========================================================== */
 
-.carre { /* vise seulement les blocs portant le nom carre */
-    height: 240px; /* donne aux blocs carrés une hauteur de 240 pixels */
-    display: flex; /* permet d'organiser leur contenu avec Flexbox */
-    flex-direction: column; /* place le contenu en colonne, donc l'un sous l'autre */
-    align-items: center; /* centre le contenu de gauche à droite */
-    justify-content: center; /* centre le contenu de haut en bas */
-    gap: 10px; /* laisse 10 pixels entre les éléments à l'intérieur */
+/* Sélectionne tous les éléments HTML portant class="carre". */
+.carre,
+
+/* Sélectionne également tous les éléments portant class="rectangle". */
+.rectangle {
+    /* Applique une couleur bleu foncé à l’arrière-plan des blocs. */
+    background-color: hwb(214 8% 71%);
+
+    /* Ajoute une bordure blanche continue de 2 px. */
+    border: 2px solid white;
+
+    /* Arrondit les quatre coins des blocs de 20 px. */
+    border-radius: 20px;
+
+    /* Ajoute 20 px entre les bordures et le contenu des blocs. */
+    padding: 20px;
+
+    /* Inclut la bordure et le padding dans les dimensions du bloc. */
+    box-sizing: border-box;
+
+    /* Centre horizontalement le texte contenu dans les blocs. */
+    text-align: center;
 }
 
 
-/* 7. Réglages des grands blocs rectangulaires */
+/* ==========================================================
+   6. PETITS BLOCS
+   Ces règles concernent uniquement les éléments class="carre".
+   ========================================================== */
 
-.rectangle { /* vise seulement les blocs portant le nom rectangle */
-    min-height: 240px; /* leur donne au moins 240 pixels de hauteur ; ils peuvent grandir si leur contenu l'exige */
-    display: flex; /* permet d'organiser leur contenu avec Flexbox */
-    flex-direction: column; /* place leur contenu en colonne */
-    justify-content: center; /* centre le contenu de haut en bas */
-    gap: 12px; /* laisse 12 pixels entre les éléments à l'intérieur */
+/* Sélectionne les différents <div class="carre"> de index.html. */
+.carre {
+    /* Donne une hauteur fixe de 240 px aux petits blocs. */
+    height: 240px;
+
+    /* Active Flexbox pour organiser le contenu interne. */
+    display: flex;
+
+    /* Place les éléments internes les uns sous les autres. */
+    flex-direction: column;
+
+    /* Centre horizontalement les titres et images. */
+    align-items: center;
+
+    /* Centre verticalement le contenu à l’intérieur du bloc. */
+    justify-content: center;
+
+    /* Ajoute 10 px entre les éléments contenus dans le bloc. */
+    gap: 10px;
 }
 
 
-/* 8. Rangée spéciale "Mes derniers projets" */
+/* ==========================================================
+   7. GRANDS BLOCS
+   Ces règles concernent uniquement les éléments class="rectangle".
+   ========================================================== */
 
-.ligne-projets { /* vise le groupe qui contient le titre et le projet Jardin Lys */
-    grid-column: 1 / -1; /* fait occuper à ce groupe toute la largeur de la grille principale */
-    display: grid; /* crée une nouvelle grille à l'intérieur de ce groupe */
-    grid-template-columns: 240px minmax(0, 1fr); /* donne 240 pixels au bloc de gauche ; le bloc de droite prend la place restante */
-    gap: 20px; /* laisse 20 pixels entre les deux blocs */
-}
+/* Sélectionne les différents éléments class="rectangle" de index.html. */
+.rectangle {
+    /* Impose une hauteur minimale de 240 px tout en autorisant son agrandissement. */
+    min-height: 240px;
 
-/* Réglage spécial du bloc carré "Mes derniers projets" */
+    /* Active Flexbox pour organiser le contenu interne. */
+    display: flex;
 
-.ligne-projets > .carre { /* vise le bloc carre placé directement dans ligne-projets */
-    height: auto; /* enlève sa hauteur fixe de 240 pixels pour qu'il puisse grandir */
-    min-height: 450px; /* lui donne au moins 450 pixels de hauteur */
-}
+    /* Place les paragraphes, titres et images verticalement. */
+    flex-direction: column;
 
+    /* Centre verticalement le contenu du bloc. */
+    justify-content: center;
 
-/* 9. Réglages des images */
-
-.carre img { /* vise les images qui se trouvent dans les blocs carre */
-    width: 60px; /* donne à ces images une largeur de 60 pixels */
-    height: auto; /* calcule la hauteur automatiquement pour ne pas déformer l'image */
-}
-
-.carre .photo { /* vise l'image qui porte le nom photo dans un bloc carre */
-    width: 140px; /* donne à la photo une largeur de 140 pixels */
-    height: 140px; /* donne à la photo une hauteur de 140 pixels */
-    border-radius: 50%; /* arrondit la photo jusqu'à lui donner une forme ronde */
-    object-fit: cover; /* recadre la photo pour remplir le cercle sans l'écraser */
-    object-position: center 25%; /* place le cadrage au centre, un peu vers le haut */
-    border: 5px solid #0d2c83; /* ajoute un contour bleu de 5 pixels */
-    box-shadow: 0 0 0 4px white; /* ajoute un contour blanc autour du contour bleu */
-    box-sizing: border-box; /* inclut les contours dans la taille annoncée de la photo */
-    filter: sepia(20%); /* ajoute un léger effet de couleur sépia */
-}
-
-.jardinlysphoto { /* vise l'image du site Jardin Lys */
-    width: 350px; /* demande une largeur de 350 pixels */
-    max-width: 100%; /* l'empêche de dépasser la largeur disponible dans son bloc */
-    height: auto; /* garde les proportions originales de l'image */
-    margin: 0 auto; /* met une marge automatique à gauche et à droite pour la centrer */
+    /* Ajoute un espace de 12 px entre les éléments internes. */
+    gap: 12px;
 }
 
 
-/* 10. Apparence des liens */
+/* ==========================================================
+   8. GROUPE « MES DERNIERS PROJETS »
+   Ces règles correspondent à <div class="ligne-projets">.
+   ========================================================== */
 
-a { /* vise tous les liens du site */
-    color: white; /* met leur texte en blanc */
+/* Sélectionne le groupe portant class="ligne-projets" dans index.html. */
+.ligne-projets {
+    /* Étend ce groupe de la première à la dernière colonne de .grille. */
+    grid-column: 1 / -1;
+
+    /* Crée une nouvelle grille à l’intérieur du groupe. */
+    display: grid;
+
+    /*
+        Donne 240 px au petit bloc de gauche.
+        Le bloc Jardin Lys utilise tout l’espace restant.
+    */
+    grid-template-columns: 240px minmax(0, 1fr);
+
+    /* Ajoute un espace de 20 px entre les deux blocs du groupe. */
+    gap: 20px;
 }
 
-.lien-jardinlys { /* vise le lien qui entoure le projet Jardin Lys */
-    text-decoration: none; /* enlève le soulignement habituel des liens */
+/*
+    Sélectionne uniquement l’élément class="carre" qui est un enfant
+    direct de l’élément class="ligne-projets".
+*/
+.ligne-projets > .carre {
+    /* Retire la hauteur fixe de 240 px définie par .carre. */
+    height: auto;
+
+    /* Donne une hauteur minimale de 450 px à ce bloc. */
+    min-height: 450px;
 }
 
-.lien-jardinlys:hover { /* s'applique quand la souris passe sur le lien Jardin Lys */
-    background-color: rgb(100, 100, 100); /* change le fond en gris au passage de la souris */
+
+/* ==========================================================
+   9. IMAGES
+   Ces règles relient les images du HTML à leur bloc parent.
+   ========================================================== */
+
+/*
+    Sélectionne toutes les balises <img> placées dans un élément
+    portant class="carre".
+*/
+.carre img {
+    /* Donne une largeur de 60 px aux images des petits blocs. */
+    width: 60px;
+
+    /* Calcule automatiquement la hauteur pour préserver les proportions. */
+    height: auto;
+}
+
+/*
+    Sélectionne l’image class="photo" uniquement lorsqu’elle se trouve
+    dans un élément class="carre".
+*/
+.carre .photo {
+    /* Donne une largeur de 140 px à la photo. */
+    width: 140px;
+
+    /* Donne une hauteur de 140 px à la photo. */
+    height: 140px;
+
+    /* Transforme la forme carrée de l’image en cercle. */
+    border-radius: 50%;
+
+    /* Recadre l’image pour remplir le cercle sans la déformer. */
+    object-fit: cover;
+
+    /* Déplace légèrement le cadrage vertical vers le haut. */
+    object-position: center 25%;
+
+    /* Ajoute une première bordure bleue de 5 px. */
+    border: 5px solid #0d2c83;
+
+    /* Ajoute une seconde bordure blanche autour de la bordure bleue. */
+    box-shadow: 0 0 0 4px white;
+
+    /* Inclut les bordures dans la largeur et la hauteur de 140 px. */
+    box-sizing: border-box;
+
+    /* Ajoute un léger effet sépia à la photo. */
+    filter: sepia(20%);
+}
+
+/* Sélectionne l’image possédant class="jardinlysphoto" dans index.html. */
+.jardinlysphoto {
+    /* Demande une largeur de 350 px pour l’image. */
+    width: 350px;
+
+    /* Empêche l’image de dépasser la largeur de son bloc parent. */
+    max-width: 100%;
+
+    /* Préserve automatiquement les proportions de l’image. */
+    height: auto;
+
+    /* Centre horizontalement l’image dans le bloc Jardin Lys. */
+    margin: 0 auto;
 }
 
 
-/* 11. Changements pour les écrans de téléphone */
+/* ==========================================================
+   10. LIENS
+   Ces règles concernent les différentes balises <a> de index.html.
+   ========================================================== */
 
-@media (max-width: 650px) { /* applique les règles suivantes si l'écran fait 650 pixels de large ou moins */
+/* Sélectionne toutes les balises de lien <a> présentes dans la page. */
+a {
+    /* Affiche le texte des liens en blanc. */
+    color: white;
+}
 
-    .video-fond { /* force la vidéo à suivre la taille visible de l'écran du téléphone */
-        width: 100vw; /* prend toute la largeur de l'écran, même si le contenu a des marges */
-        height: 100vh; /* solution de secours pour les navigateurs qui ne connaissent pas 100dvh */
-        height: 100dvh; /* prend toute la hauteur visible du téléphone, même quand la barre Safari bouge */
+/*
+    Sélectionne le lien portant class="lien-jardinlys",
+    qui englobe entièrement le bloc du projet Jardin Lys.
+*/
+.lien-jardinlys {
+    /* Supprime le soulignement normalement appliqué aux liens. */
+    text-decoration: none;
+}
+
+/* S’applique lorsque la souris survole le bloc cliquable Jardin Lys. */
+.lien-jardinlys:hover {
+    /* Remplace temporairement son fond bleu par un fond gris. */
+    background-color: rgb(100, 100, 100);
+}
+
+
+/* ==========================================================
+   11. VERSION POUR LES TÉLÉPHONES
+   Ces règles s’activent sur un écran de 650 px ou moins.
+   ========================================================== */
+
+/* Ouvre la media query consacrée aux écrans étroits. */
+@media (max-width: 650px) {
+
+    /* Sélectionne la même vidéo class="video-fond" sur téléphone. */
+    .video-fond {
+        /* Force la vidéo à utiliser toute la largeur de l’écran. */
+        width: 100vw;
+
+        /* Fournit une hauteur de secours pour les anciens navigateurs. */
+        height: 100vh;
+
+        /* Utilise toute la hauteur disponible sur le téléphone. */
+        height: 100lvh;
     }
 
-    .grille { /* adapte la grille principale au téléphone */
-        grid-template-columns: 1fr; /* remplace les deux colonnes par une seule */
-        gap: 15px; /* laisse 15 pixels entre les blocs */
-        margin: 20px auto; /* laisse 20 pixels au-dessus et en dessous, et centre la grille */
-        padding: 0 15px; /* laisse 15 pixels de marge intérieure sur les côtés */
+    /* Adapte <main class="grille"> aux petits écrans. */
+    .grille {
+        /* Remplace les deux colonnes par une seule colonne. */
+        grid-template-columns: 1fr;
+
+        /* Réduit l’espace entre les blocs à 15 px. */
+        gap: 15px;
+
+        /* Ajoute 20 px verticalement et centre la grille. */
+        margin: 20px auto;
+
+        /* Ajoute un espace intérieur de 15 px à gauche et à droite. */
+        padding: 0 15px;
     }
 
-    .ligne-projets { /* adapte aussi la rangée Jardin Lys */
-        grid-template-columns: 1fr; /* met le titre et le projet l'un sous l'autre */
-        gap: 15px; /* laisse 15 pixels entre ces deux blocs */
+    /* Adapte le groupe class="ligne-projets" aux téléphones. */
+    .ligne-projets {
+        /* Place le titre du projet et Jardin Lys l’un sous l’autre. */
+        grid-template-columns: 1fr;
+
+        /* Réduit l’espace entre les deux blocs à 15 px. */
+        gap: 15px;
     }
 
-    .carre { /* adapte les blocs carrés au téléphone */
-        width: 100%; /* leur permet de prendre toute la largeur disponible */
-        height: auto; /* laisse leur hauteur s'adapter à leur contenu */
-        min-height: 200px; /* leur garde au moins 200 pixels de hauteur */
+    /* Adapte tous les éléments class="carre" aux téléphones. */
+    .carre {
+        /* Donne aux petits blocs toute la largeur disponible. */
+        width: 100%;
+
+        /* Permet à la hauteur de s’adapter automatiquement au contenu. */
+        height: auto;
+
+        /* Conserve une hauteur minimale de 200 px. */
+        min-height: 200px;
     }
 
-    .ligne-projets > .carre { /* vise le bloc "Mes derniers projets" sur téléphone */
-        min-height: 200px; /* réduit sa hauteur minimale à 200 pixels */
+    /*
+        Sélectionne le petit bloc directement placé dans .ligne-projets
+        sur la version mobile.
+    */
+    .ligne-projets > .carre {
+        /* Réduit sa hauteur minimale de 450 px à 200 px. */
+        min-height: 200px;
     }
 
-    .rectangle { /* adapte les blocs rectangulaires au téléphone */
-        min-height: 0; /* enlève leur hauteur minimale de 240 pixels */
+    /* Adapte tous les éléments class="rectangle" aux téléphones. */
+    .rectangle {
+        /* Supprime leur hauteur minimale de 240 px. */
+        min-height: 0;
     }
 
-    h1, /* sélectionne les titres h1 sur téléphone */
-    h2 { /* sélectionne aussi les titres h2 sur téléphone */
-        font-size: 20px; /* réduit leur taille à 20 pixels */
+    /* Sélectionne les titres <h1> sur téléphone. */
+    /* Sélectionne également les titres <h2> sur téléphone. */
+    h1, h2 {
+        /* Réduit la taille des titres de 22 px à 20 px. */
+        font-size: 20px;
     }
 
-    p { /* sélectionne les paragraphes sur téléphone */
-        font-size: 16px; /* règle leur taille à 16 pixels */
-        line-height: 1.5; /* augmente l'espace entre les lignes pour faciliter la lecture */
+    /* Sélectionne les paragraphes <p> sur téléphone. */
+    p {
+        /* Donne une taille de 16 px au texte des paragraphes. */
+        font-size: 16px;
+
+        /* Ajoute de l’espace entre les lignes pour améliorer la lecture. */
+        line-height: 1.5;
     }
 
-    .carre .photo { /* vise la photo de profil dans un bloc carre sur téléphone */
-        width: 100px; /* réduit sa largeur à 100 pixels */
-        height: 100px; /* réduit sa hauteur à 100 pixels */
+    /*
+        Sélectionne l’image class="photo" située dans class="carre"
+        uniquement sur les écrans de téléphone.
+    */
+    .carre .photo {
+        /* Réduit la largeur de la photo à 100 px. */
+        width: 100px;
+
+        /* Réduit la hauteur de la photo à 100 px. */
+        height: 100px;
     }
+
+/* Ferme la media query consacrée aux écrans de 650 px ou moins. */
 }
