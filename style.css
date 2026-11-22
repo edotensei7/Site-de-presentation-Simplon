@@ -28,6 +28,11 @@ body {
     color: white;
 }
 
+html {
+    /* Fond violet sombre derrière la vidéo. */
+    background-color: rgb(59, 6, 59);
+}
+
 /* @font-face permet de charger un fichier de police. */
 @font-face {
     /* MaPolice est le nom choisi pour utiliser cette police. */
